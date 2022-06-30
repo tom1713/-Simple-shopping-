@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>購物頁面</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+<table class="table" style="width: 800px; margin: 10px auto" >
+    <thead>
+    <tr>
+        <th scope="col">圖片</th>
+        <th scope="col">商品名稱</th>
+        <th scope="col">價格</th>
+        <th scope="col">描述</th>
+        <th scope="col">庫存</th>
+        <th scope="col">時間</th>
+        <th scope="col">數量</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in shopItem %}
+    <tr>
+        <form method="POST" action="/addtocart">
+        <th><img src="{{ item["link"] }}" class="img-thumbnail" alt="無法顯示"></th>
+        <th scope="row">{{ item["name"] }}</th>
+        <th>{{ item["price"] }}</th>
+        <th>{{ item["description"] }}</th>
+        <th>{{ item["stock"] }}</th>
+        <th>{{ item["date"] }}</th>
+        <th><input type="text" name="quantity" value="1"></th>
+        <th><input type="submit" value="加入購物車" class="default-btn" /></th>
+        <th><input type="hidden" name="_id" value="{{ item["_id"] }}"/></th>
+        </form>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="container">
+    <!-- Content here -->
+    <div class="container" style="width: 600px; margin: 100px auto">
+        <div class="row">
+            <div class="col-4">
+                <a href="/signout">登出</a>
+                <a href="/mycart">購物車</a>
+            </div>
+        </div>
+    </div>
+</div>  
+</body>
+</html>

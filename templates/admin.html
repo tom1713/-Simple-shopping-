@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>管理員頁面</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+<table class="table" style="width: 800px; margin: 100px auto" >
+    <thead>
+    <tr>
+        <th scope="col">圖片</th>
+        <th scope="col">商品名稱</th>
+        <th scope="col">價格</th>
+        <th scope="col">描述</th>
+        <th scope="col">庫存</th>
+        <th scope="col">時間</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in shopItem %}
+    <tr>
+        <th><img src="{{ item["link"] }}" class="img-thumbnail" alt="無法顯示"></th>
+        <th scope="row">{{ item["name"] }}</th>
+        <th>{{ item["price"] }}</th>
+        <th>{{ item["description"] }}</th>
+        <th>{{ item["stock"] }}</th>
+        <th>{{ item["date"] }}</th>
+        <th><pre><a href="/delete?name={{ item["name"] }}">刪除</a>  <a href="/update?name={{ item["name"] }}">修改</a></pre></th>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="container">
+    <!-- Content here -->
+    <div class="container" style="width: 600px; margin: 100px auto">
+        <div class="row">
+            <div class="col-4">
+                <a href="/add">新增</a> <a href="/adminsignout">登出</a>
+            </div>
+        </div>
+    </div>
+</div>  
+</body>
+</html>

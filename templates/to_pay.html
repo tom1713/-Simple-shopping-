@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+	<title>消費明細</title>
+	<link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+<table class="table" style="width: 800px; margin: 10px auto" >
+    <thead>
+		<th><h2>Purchase Order</h2></th>
+    <tr>
+        <th scope="col">圖片</th>
+        <th scope="col">商品名稱</th>
+        <th scope="col">價格</th>
+        <th scope="col">描述</th>
+        <th scope="col">數量</th>
+		<th scope="col">總價格</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in products %}
+    <tr>
+        <th><img src="{{ item["link"] }}" class="img-thumbnail" alt="無法顯示"></th>
+        <th scope="row">{{ item["name"] }}</th>
+        <th>{{ item["price"] }}</th>
+        <th>{{ item["description"] }}</th>
+		<th>{{ item["quantity"] }}</th>
+		<th>{{ item["totalprice"] }}</th>
+    </tr>
+    {% endfor %}
+        <th>總金額:{{ totalprice }}</th>
+    </tbody>
+    <form action="/to_ecpay" method="POST">
+	    <th><input type="submit" value="付款" class="default-btn" /></th>
+	</form>
+
+</table>
+</body>
+</html>
