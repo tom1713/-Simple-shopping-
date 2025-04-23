@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 import time
 import pymongo
 client = pymongo.MongoClient(
-    "mongodb+srv://root:root123@cluster0.hpcbu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    "mongodb+srv://user:user123@cluster0.hpcbu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 db = client.shop_system
 print("資料庫連線建立成功")
 
